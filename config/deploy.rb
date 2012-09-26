@@ -18,6 +18,8 @@ set :keep_releases, 5
 set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 
+ssh_options[:port] = 24242
+
 before 'deploy:setup', 'rvm:install_rvm'
 before 'deploy:setup', 'rvm:install_ruby'
 
