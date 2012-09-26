@@ -3,8 +3,9 @@ TagrServer::Application.routes.draw do
   resources :tag_images
 
   post 'signup', to: 'users#create'
-  post 'login', to: 'sessions#create'
-  get 'logout', to: 'sessions#destroy'
+  post 'login', to: 'api_keys#create'
+  
+  #get 'logout', to: 'sessions#destroy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

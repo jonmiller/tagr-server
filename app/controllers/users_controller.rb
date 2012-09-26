@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  skip_before_filter :verify_api_key
+
   respond_to :json
 
   def create

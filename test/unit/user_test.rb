@@ -23,4 +23,20 @@ class UserTest < ActiveSupport::TestCase
     Rails.logger.debug "user.errors = #{user.errors.each {|msg| p msg}}"
   end
 
+  test "reset api key" do
+    user = FactoryGirl.create(:user)
+    assert user.api_keys.empty?
+    user.reset_api_keys
+    assert !user.api_keys.empty?
+    Rails.logger.debug "user.api_keys = #{user.api_keys.inspect}"
+  end
+
+  test "ensure api key" do
+    user = FactoryGirl.create(:user)
+    assert user.api_keys.empty?
+    user.ensure_api_key
+    assert_equal 1, user.api_keys.count
+    Rails.logger.debug "user.api_keys = #{user.api_keys.inspect}"
+  end
+
 end
