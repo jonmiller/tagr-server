@@ -2,10 +2,6 @@ require 'test_helper'
 
 class TagImageTest < ActiveSupport::TestCase
 
-  setup do
-    init_carrierwave_for_tests
-  end
-
   test "create image" do
 
     tag_image = FactoryGirl.build(:tag_image)
@@ -24,7 +20,12 @@ class TagImageTest < ActiveSupport::TestCase
 
     assert_not_nil tag_image.image
     assert_not_nil tag_image.image.url
-    assert_equal tag_image.image.identifier, "forest.jpg"
+    assert_equal "forest.jpg", tag_image.image.identifier
+
+    assert_not_nil tag_image.user
+
+    assert_equal "test_user@test.com", tag_image.user.email
+
   end
 
 end

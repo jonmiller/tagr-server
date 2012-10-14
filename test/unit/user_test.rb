@@ -9,6 +9,13 @@ class UserTest < ActiveSupport::TestCase
     Rails.logger.debug "user.password_digest = #{user.password_digest}"
   end
 
+  test "create user with tag images" do
+    user = FactoryGirl.build(:user_with_tag_images)
+    assert user.save
+    assert_equal user.email, "test_user@test.com"
+    assert_equal 2, user.tag_images.length
+  end
+
   test "create user without email" do
     user = FactoryGirl.build(:user)
     user.email = nil

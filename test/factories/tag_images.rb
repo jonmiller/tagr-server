@@ -18,10 +18,5 @@ FactoryGirl.define do
     filename "flatirons.jpg"
   end
 
-  factory :user do
-    email "test_user@test.com"
-    password "testpassword"
-    password_confirmation "testpassword"
-  end
-
 end
+

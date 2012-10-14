@@ -4,13 +4,14 @@ class TagImagesController < ApplicationController
 
   def index
     Rails.logger.debug "Entering index action"
-    @tag_images = TagImage.all
-    respond_with @tag_images, :location => nil
+    Rails.logger.debug "current_user.id = #{current_user.id}"
+    @tag_images = current_user.tag_images
+    respond_with @tag_images, location: nil
   end
 
   def show
     @tag_image = TagImage.find(params[:id])
-    respond_with @tag_image, :location => nil
+    respond_with @tag_image, location: nil
   end
 
   def create

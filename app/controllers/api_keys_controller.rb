@@ -13,7 +13,7 @@ class ApiKeysController < ApplicationController
       flash[:error] = "Email or password is invalid"
     end
     respond_with user do |format|
-      format.json { render :json => user.api_keys.first.to_json(:only => :access_token) }
+      format.json { render json: user.api_keys.first.to_json(only: :access_token) }
     end
   end
 
